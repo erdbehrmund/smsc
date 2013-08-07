@@ -15,8 +15,13 @@ module Smsc
       end
     end
 
-    def message(message, phones)
-      @connection.post '/sys/send.php', { login: @login, psw: @password, phones: phones.join(','), mes: message, charset: @charset }
+    def message(message, phones, sender = nil)
+      @connection.post('/sys/send.php', login: @login,
+                                        psw: @password,
+                                        phones: phones.join(','),
+                                        mes: message,
+                                        sender: sender,
+                                        charset: @charset)
     end
 
   end
